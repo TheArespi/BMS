@@ -43,6 +43,14 @@
 			$this->lastname = $lastname;
 		}
 
+		public function getFullname(){
+			$fname = $this->firstname;
+			$mname = $this->middlename;
+			$lname = $this->lastname;
+
+			return $fname.' '.$mname[0].'. '.$lname;
+		}
+
 		public function getBirthday(){
 			return $this->birthday;
 		}
