@@ -71,8 +71,10 @@
 	  								<form action="barangayPositionUpdate.php?id=<?php echo $official->getId() ?>" method="POST">
 		  								<div class="col-md-4">
 		  									<select class="form-control" name="position">
-				  								<?php foreach ($positions as $position) { ?>
-				  									<option value="<?php echo $position->getPositionCode()?>" <?php if ($position->getPositionCode() == $official->getPosition()) echo 'selected'; ?>><?php echo $position->getPosition()?></option>	
+				  								<?php foreach ($positions as $position) { 
+				  										$members = BarangayOfficialDao::countMemberOf($position->getPositionCode());
+				  									?>
+				  									<option value="<?php echo $position->getPositionCode()?>" <?php if ($position->getPositionCode() == $official->getPosition()) echo 'selected'; ?> <?php if ($members >= $position->getNumOfMembers()) echo "disabled";?>><?php echo $position->getPosition()?></option>	
 				  								<?php } ?>
 				  							</select>
 		  								</div>

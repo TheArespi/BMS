@@ -107,6 +107,26 @@
   								</div>
   							</div>
   						</form>
+  						<br>
+  						<br>
+  						<form action="updatePassword.php" method="POST">
+  							<div class="input-group">
+  								<span class="input-group-addon">Old Password</span>
+  								<input type="password" name="oldpass" class="form-control" required>
+  							</div>
+  							<br>
+  							<div class="input-group">
+  								<span class="input-group-addon">New Password</span>
+  								<input type="password" name="newpass" class="form-control" required>
+  							</div>
+  							<br>
+  							<div class="input-group">
+  								<span class="input-group-addon">Retype Password</span>
+  								<input type="password" name="repass" class="form-control" required>
+  							</div>
+  							<br>
+  							<button class="btn pull-right">Change Password</button>
+  						</form>
   					</fieldset>
   				</div>
   			</div>
