@@ -7,7 +7,7 @@
 
 	if (LoginDao::isUsernameTaken($username)){
 		$login = LoginDao::getLoginInfoByUsername($username);
-		if ($password == $login->getPassword()){
+		if ($password === $login->getPassword()){
 			$_SESSION['id'] = $login->getId();
 			if ($login->getAccess() == "adm"){
 				header("Location: admin");

@@ -6,6 +6,10 @@ $background: #DBDBDB;
 
 $mainFont: 'ubuntu', sans-serif;
 
+textarea{
+	resize: none;
+}
+
 body {
 	background-color: $background;
 }
@@ -229,4 +233,6 @@ footer{
 	margin-top: 15px;
 	padding: 15px;
 	font-size: 0.8em;
+	display: none;
 }
+

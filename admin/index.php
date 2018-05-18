@@ -2,9 +2,13 @@
 <?php
 	session_start();
 
+	include_once '../includes/announcement.php';
+
 	if (!isset($_SESSION['id']) && empty($_SESSION['id'])){
 		header("Location: ../index.php");
 	}
+
+	$announcements = AnnouncementDao::getAllAnnouncement();
 ?>
 
 <!doctype html>
@@ -19,17 +23,55 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-		<link rel="stylesheet" type="text/css" href="/../css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<title>Welcome to our Barangay</title>
 	</head>
   	<body>
 
   		<?php include_once 'navigation.php';?>
 
-  		<div class="container-fluid mainContent">
+  		<div class="container">
   			<div class="row">
-  				<div class="notificationside col-md-1">
-  					Notifications
+  				<div class="col-md-2"></div>
+  				<div class="col-md-8">
+  					<?php 
+  						if (sizeof($announcements) > 0) { 
+  							foreach ($announcements as $announcement) {
+  					?>
+  						<div class="well" style="margin-top: 20px;">
+  							<h1 style="align: center; font-family: 'ubuntu', sans-serif; font-weight: bold">
+  								<?php echo $announcement->getTitle() ?> 
+  								<div class="pull-right">
+  									<a href="editAnnouncement.php?id=<?php echo $announcement->getId() ?>" style="text-decoration: none">
+	  									<span class="glyphicon glyphicon-cog"></span>
+	  								</a>
+	  								<a href="deleteAnnouncement.php?id=<?php echo $announcement->getId() ?>">
+	  									<span class="glyphicon glyphicon-trash"></span>
+	  								</a>
+	  							</div>
+  							</h1>
+  							<hr style="width: 100%; color: black; height: 1px; background-color:black;"/>
+  							<p><?php echo $announcement->getContent() ?></p>
+  						</div>
+  					<?php }} else { ?>
+  						<div class="no-announcement">
+	  						<div class="well" style="margin-top: 20px;">
+	  							<div class="container-fluid">
+	  								<div class="row">
+	  									<div class="col-md-4">
+
+	  									</div>
+	  									<div class="col-md-8">
+	  										<h2>Sorry, there are currently no announcement!</h2>
+	  									</div>
+	  								</div>
+	  							</div>
+	  						</div>
+  						</div>	
+  					<?php } ?>
+  				</div>
+  				<div class="col-md-2">
+  					<a href="addAnnouncement.php" class="btn btn-link" style="margin-top: 22px;">Add Announcement <span class="glyphicon glyphicon-plus"></span></a>
   				</div>
   			</div>
   		</div>

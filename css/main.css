@@ -1,3 +1,6 @@
+textarea {
+  resize: none; }
+
 body {
   background-color: #DBDBDB; }
 
@@ -155,6 +158,7 @@ footer {
   color: white;
   margin-top: 15px;
   padding: 15px;
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */
